@@ -2,6 +2,10 @@
   (:require [clojure.test :refer :all]
             [ironic-case.core :refer :all]))
 
-(deftest a-test
-  (testing "FIXME, I fail."
-    (is (= 0 1))))
+(deftest ironize-test
+  (testing "Empty string on empty input"
+    (is (= (ironize "") "")))
+  (testing "First character lowercase given uppercase"
+    (is (= (ironize "A") "a")))
+  (testing "Second character uppercase given lowercase"
+    (is (= (second (ironize "Ab")) \B))))
