@@ -4,11 +4,12 @@
 (defn ironize
   "Convert to ironic-case"
   [input]
-  (let [casePairs (partition 2 2 [""] input)
-        ironizePair #(str
-                       (clojure.string/lower-case (first %))
-                       (clojure.string/upper-case (second %)))]
-      (apply str (map ironizePair casePairs))))
+  (->> input
+    (partition 2 2 [""])
+    (map #(str
+           (clojure.string/lower-case (first %))
+           (clojure.string/upper-case (second %))))
+    (apply str)))
 
 (defn -main
   "I don't do a whole lot ... yet."
